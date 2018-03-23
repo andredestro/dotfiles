@@ -15,6 +15,6 @@ First, make sure you have all those things installed:
 
 Then, run these:
 
-```console
+```sh
 git clone https://github.com/andredestro/dotfiles.git ~/.dotfiles && cd ~/.dotfiles && ./script/bootstrap
 ```
