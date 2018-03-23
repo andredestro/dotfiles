@@ -1,4 +1,4 @@
-# andre' dotfiles
+# andre's dotfiles
 
 > Config files and installs some softwares
 
