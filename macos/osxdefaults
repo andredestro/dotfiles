@@ -51,10 +51,6 @@ defaults write com.apple.LaunchServices LSQuarantine -bool false
 echo "›› Set dark interface style"
 defaults write NSGlobalDomain AppleInterfaceStyle -string "Dark"
 
-echo "›› Removing duplicates in the 'Open With' menu"
-/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister \
-	-kill -r -domain local -domain system -domain user
-
 echo "› Finder:"
 
 echo "›› Expand save panel by default"
