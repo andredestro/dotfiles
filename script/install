@@ -8,7 +8,7 @@ cd "$(dirname $0)"/..
 
 # Run Homebrew through the Brewfile
 echo "› brew bundle"
-brew bundle
+brew bundle -v
 brew cask clean
 
 # Instal software from Mac App Store

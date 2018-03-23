@@ -12,7 +12,6 @@ cask 'whatsapp'
 # Android dev
 cask 'android-studio'
 cask 'genymotion'
-cask 'virtualbox'
 
 # Xamarin dev
 cask 'rider'
