@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Sets reasonable macOS defaults.
+
+echo "osx defaults"
+
+echo "› System:"
+echo "  › Disable press-and-hold for keys in favor of key repeat"
+defaults write -g ApplePressAndHoldEnabled -bool false

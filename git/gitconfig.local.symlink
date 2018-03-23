@@ -1,0 +1,5 @@
+[user]
+        name = André Felipe Destro
+        email = afdestro@gmail.com
+[credential]
+        helper = osxkeychain
