@@ -3,5 +3,105 @@
 # Sets reasonable macOS defaults.
 
 echo "› System:"
+
 echo "›› Disable press-and-hold for keys in favor of key repeat"
 defaults write -g ApplePressAndHoldEnabled -bool false
+
+echo "›› Use AirDrop over every interface"
+defaults write com.apple.NetworkBrowser BrowseAllInterfaces 1
+
+echo "›› Show the ~/Library folder"
+chflags nohidden ~/Library
+
+echo "›› Show the /Volumes folder"
+sudo chflags nohidden /Volumes
+
+echo "›› Set a really fast key repeat"
+defaults write NSGlobalDomain KeyRepeat -int 2
+defaults write NSGlobalDomain InitialKeyRepeat -int 15
+
+echo "›› Enable text replacement almost everywhere"
+defaults write -g WebAutomaticTextReplacementEnabled -bool true
+
+echo "›› Turn off keyboard illumination when computer is not used for 5 minutes"
+defaults write com.apple.BezelServices kDimTime -int 300
+
+echo "›› Require password immediately after sleep or screen saver begins"
+defaults write com.apple.screensaver askForPassword -int 1
+defaults write com.apple.screensaver askForPasswordDelay -int 0
+
+echo "›› Disable Dashboard"
+defaults write com.apple.dashboard mcx-disabled -bool true
+
+echo "›› Disable smart quotes and smart dashes as they're annoying when typing code"
+defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
+defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
+
+echo "›› Set up trackpad & mouse speed to a reasonable number"
+defaults write -g com.apple.trackpad.scaling 2
+defaults write -g com.apple.mouse.scaling 2.5
+
+echo "  › Avoid the creation of .DS_Store files on network volumes"
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+
+echo "  › Disable the 'Are you sure you want to open this application?' dialog"
+defaults write com.apple.LaunchServices LSQuarantine -bool false
+
+echo "  › Set dark interface style"
+defaults write NSGlobalDomain AppleInterfaceStyle -string "Dark"
+
+echo "  › Removing duplicates in the 'Open With' menu"
+/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister \
+	-kill -r -domain local -domain system -domain user
+
+echo ""
+echo "› Finder:"
+
+echo "  › Expand save panel by default"
+defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
+
+echo "  › Disable the warning when changing a file extension"
+defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+
+echo ""
+echo "› Photos:"
+
+echo "  › Disable it from starting everytime a device is plugged in"
+defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
+
+
+echo ""
+echo "› Browsers:"
+
+echo "  › Set up Safari for development"
+defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
+defaults write com.apple.Safari IncludeDevelopMenu -bool true
+defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
+defaults write com.apple.Safari "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" -bool true
+defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
+
+echo ""
+echo "› Dock"
+
+echo "  › Setting the icon size of Dock items to 36 pixels for optimal size/screen-realestate"
+defaults write com.apple.dock tilesize -int 36
+
+echo "  › Speeding up Mission Control animations and grouping windows by application"
+defaults write com.apple.dock expose-animation-duration -float 0.1
+defaults write com.apple.dock "expose-group-by-app" -bool true
+
+echo "  › Automatically hide and show the Dock"
+defaults write com.apple.dock autohide -bool true
+
+echo ""
+echo "› Mail:"
+
+echo "  › Add the keyboard shortcut CMD + Enter to send an email"
+defaults write com.apple.mail NSUserKeyEquivalents -dict-add "Send" "@\U21a9"
+
+echo "  › Add the keyboard shortcut CMD + Shift + E to archive an email"
+# shellcheck disable=SC2016
+defaults write com.apple.mail NSUserKeyEquivalents -dict-add "Archive" '@$e'
+
+echo "  › Disable inline attachments (just show the icons)"
+defaults write com.apple.mail DisableInlineAttachmentViewing -bool true
