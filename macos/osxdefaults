@@ -41,67 +41,69 @@ echo "›› Set up trackpad & mouse speed to a reasonable number"
 defaults write -g com.apple.trackpad.scaling 2
 defaults write -g com.apple.mouse.scaling 2.5
 
-echo "  › Avoid the creation of .DS_Store files on network volumes"
+echo "›› Avoid creating .DS_Store files on network or USB volumes"
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 
-echo "  › Disable the 'Are you sure you want to open this application?' dialog"
+echo "›› Disable the 'Are you sure you want to open this application?' dialog"
 defaults write com.apple.LaunchServices LSQuarantine -bool false
 
-echo "  › Set dark interface style"
+echo "›› Set dark interface style"
 defaults write NSGlobalDomain AppleInterfaceStyle -string "Dark"
 
-echo "  › Removing duplicates in the 'Open With' menu"
+echo "›› Removing duplicates in the 'Open With' menu"
 /System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister \
 	-kill -r -domain local -domain system -domain user
 
 echo ""
 echo "› Finder:"
 
-echo "  › Expand save panel by default"
+echo "›› Expand save panel by default"
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
 
-echo "  › Disable the warning when changing a file extension"
+echo "›› Disable the warning when changing a file extension"
 defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
 echo ""
 echo "› Photos:"
 
-echo "  › Disable it from starting everytime a device is plugged in"
+echo "›› Disable it from starting everytime a device is plugged in"
 defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
-
 
 echo ""
 echo "› Browsers:"
 
-echo "  › Set up Safari for development"
+echo "›› Set up Safari for development"
 defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
 defaults write com.apple.Safari IncludeDevelopMenu -bool true
 defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
 defaults write com.apple.Safari "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" -bool true
 defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
 
+echo "›› Show the full URL in the address bar"
+defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
+
+echo "›› Prevent Safari from opening ‘safe’ files automatically after downloading"
+defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
+
 echo ""
 echo "› Dock"
 
-echo "  › Setting the icon size of Dock items to 36 pixels for optimal size/screen-realestate"
+echo "›› Setting the icon size of Dock items to 36 pixels for optimal size/screen-realestate"
 defaults write com.apple.dock tilesize -int 36
 
-echo "  › Speeding up Mission Control animations and grouping windows by application"
+echo "›› Speeding up Mission Control animations and grouping windows by application"
 defaults write com.apple.dock expose-animation-duration -float 0.1
 defaults write com.apple.dock "expose-group-by-app" -bool true
 
-echo "  › Automatically hide and show the Dock"
+echo "›› Automatically hide and show the Dock"
 defaults write com.apple.dock autohide -bool true
 
 echo ""
 echo "› Mail:"
 
-echo "  › Add the keyboard shortcut CMD + Enter to send an email"
+echo "›› Add the keyboard shortcut CMD + Enter to send an email"
 defaults write com.apple.mail NSUserKeyEquivalents -dict-add "Send" "@\U21a9"
 
-echo "  › Add the keyboard shortcut CMD + Shift + E to archive an email"
-# shellcheck disable=SC2016
-defaults write com.apple.mail NSUserKeyEquivalents -dict-add "Archive" '@$e'
-
-echo "  › Disable inline attachments (just show the icons)"
+echo "›› Disable inline attachments (just show the icons)"
 defaults write com.apple.mail DisableInlineAttachmentViewing -bool true
