@@ -1,6 +1,6 @@
 # andre's dotfiles
 
-> Config files and installs some softwares
+> Config files and installs some apps
 
 ## Installation
 
