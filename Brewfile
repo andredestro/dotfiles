@@ -1,3 +1,6 @@
+brew 'diff-so-fancy'
+brew 'mas'
+
 # Editors
 cask 'sublime-text'
 # Media

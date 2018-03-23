@@ -17,5 +17,4 @@ echo "› brew upgrade"
 brew upgrade
 
 # Install software
-echo "› Installing software"
 $DOTFILES/script/install

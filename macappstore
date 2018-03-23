@@ -1,9 +1,6 @@
-# A simple command line interface for the Mac App Store
-install 'mas'
-
 # Development
-mas 497799835 # Xcode
+mas install 497799835 # Xcode
 
 # Utils
-mas 595191960 # CopyClip
-mas 458887729 # Translate Tab
+mas install 595191960 # CopyClip
+mas install 458887729 # Translate Tab

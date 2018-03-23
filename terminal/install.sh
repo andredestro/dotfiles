@@ -4,7 +4,7 @@
 #
 # Use a modified version of the Solarized Dark theme by default in Terminal.app
 
-echo "› Changing default theme in Terminal.app"
+echo "Changing default theme in Terminal.app"
 
 osascript <<EOD
 

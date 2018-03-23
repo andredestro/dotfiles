@@ -9,13 +9,14 @@ cd "$(dirname $0)"/..
 # Run Homebrew through the Brewfile
 echo "› brew bundle"
 brew bundle -v
-brew cask clean
+brew cask cleanup
 
-# Instal software from Mac App Store
-if test "$(uname)" = "Darwin"
-  then
-  bash macappstore
-fi
+echo "› Installing software from Mac App Store"
+sh macappstore
 
 # find the installers and run them iteratively
-find . -name install.sh | while read installer ; do sh -c "${installer}" ; done
+echo "› Find and executes install scripts"
+find . -name install.sh | while read installer ; do 
+	echo "›› ${installer}..."
+	sh -c "${installer}" ;
+done

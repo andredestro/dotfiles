@@ -1,27 +1,9 @@
-# Local/private config goes in the include
+[user]
+	name = André Felipe Destro
+	email = afdestro@gmail.com
 [include]
-        path = ~/.gitconfig.local
-[hub]
-        protocol = https
-[color]
-        diff = auto
-        status = auto
-        branch = auto
-        ui = true
+	path = /Users/andre/.gitconfig.local
+[credential]
+	helper = osxkeychain
 [core]
-        excludesfile = ~/.gitignore
-        editor = vim
-[apply]
-        whitespace = nowarn
-[mergetool]
-        keepBackup = false
-[difftool]
-        prompt = false
-[help]
-        autocorrect = 1
-[push]
-        # See `git help config` (search for push.default)
-        # for more information on different options of the below setting.
-        #
-        # Setting to git 2.0 default to suppress warning message
-        default = simple
+	pager = diff-so-fancy | less --tabs=4 -RFX
