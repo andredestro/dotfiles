@@ -1,6 +1,5 @@
 # Editors
 cask 'sublime-text'
-
 # Media
 cask 'spotify'
 cask 'vlc'
