@@ -1,9 +1,0 @@
-[user]
-	name = André Felipe Destro
-	email = afdestro@gmail.com
-[include]
-	path = /Users/andre/.gitconfig.local
-[credential]
-	helper = osxkeychain
-[core]
-	pager = diff-so-fancy | less --tabs=4 -RFX
