@@ -51,6 +51,9 @@ defaults write com.apple.LaunchServices LSQuarantine -bool false
 echo "›› Set dark interface style"
 defaults write NSGlobalDomain AppleInterfaceStyle -string "Dark"
 
+echo "›› Show battery percentage"
+defaults write com.apple.menuextra.battery ShowPercent YES
+
 echo "› Finder:"
 
 echo "›› Expand save panel by default"
