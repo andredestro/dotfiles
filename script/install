@@ -4,19 +4,21 @@
 
 set -e
 
+source script/log
+
 cd "$(dirname $0)"/..
 
 # Run Homebrew through the Brewfile
-echo "› brew bundle"
+info "› brew bundle"
 brew bundle -v
 brew cask cleanup
 
-echo "› Installing software from Mac App Store"
+info "› Installing software from Mac App Store"
 sh macappstore
 
 # find the installers and run them iteratively
-echo "› Find and executes install scripts"
+info "› Find and executes install scripts"
 find . -name install.sh | while read installer ; do 
-	echo "›› ${installer}..."
+	info "›› ${installer}..."
 	sh -c "${installer}" ;
 done

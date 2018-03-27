@@ -7,13 +7,15 @@
 
 set -e
 
+source script/log
+
 export DOTFILES=$HOME/.dotfiles
 
 # Install homebrew
 $DOTFILES/homebrew/install.sh
 
 # Upgrade homebrew
-echo "› brew upgrade"
+info "› brew upgrade"
 brew upgrade
 
 # Install software
