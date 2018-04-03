@@ -13,19 +13,16 @@ echo ''
 
 check_mac_updates() {
   info 'Finding available software updates'
-  softwareupdate_result=$(softwareupdate -l 2>&1)
-  if [[ softwareupdate_result = *"No new software available"* ]]; then
-    system_updated=true
-  fi
-  if ! [[ system_updated = true ]]; then
-    if [[ softwareupdate_result = *"[restart]"* ]]; then
+  softwareupdate_result=$(softwareupdate -l 2>&1) 
+  if [[ $softwareupdate_result != *"No new software available"* && $softwareupdate_result != *"No updates are available"* ]]; then
+    if [[ $softwareupdate_result = *"[restart]"* ]]; then
       need_reboot=true
     fi
     sudo softwareupdate -i -a --no-scan
-  fi 
-  success 'MacOS updated!'
+  fi
+  success 'system updated'
 
-  if [[ need_reboot = true ]]; then
+  if [[ $need_reboot = true ]]; then
     warning 'Please, reboot your mac and re-run this script'
     exit 0
   fi
