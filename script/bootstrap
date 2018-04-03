@@ -17,7 +17,7 @@ check_mac_updates() {
   if [[ softwareupdate_result = *"No new software available"* ]]; then
     system_updated=true
   fi
-  if ! [[ system_updated ]]; then
+  if ! [[ system_updated = true ]]; then
     if [[ softwareupdate_result = *"[restart]"* ]]; then
       need_reboot=true
     fi
