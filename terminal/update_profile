@@ -2,9 +2,15 @@
 #
 # Terminal
 #
-# Use a modified version of the Solarized Dark theme by default in Terminal.app
+# Use a modified version of the Solarized Dark profile by default in Terminal.app
 
-echo "Changing default theme in Terminal.app"
+startup_window_settings=$(defaults read com.apple.Terminal "Startup Window Settings")
+default_window_settings=$(defaults read com.apple.Terminal "Default Window Settings")
+
+if [[ $startup_window_settings = "Solarized Dark" && $default_window_settings = "Solarized Dark" ]]; then
+	echo 'already updated'
+	exit 0
+fi
 
 osascript <<EOD
 

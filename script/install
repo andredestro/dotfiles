@@ -2,11 +2,14 @@
 #
 # Run all dotfiles installers.
 
+DOTFILES_ROOT=$(pwd -P)
+
 set -e
 
 source script/log
 
-cd "$(dirname $0)"/..
+# Install homebrew if needed
+$DOTFILES_ROOT/homebrew/install.sh
 
 # Run Homebrew through the Brewfile
 info "› brew bundle"

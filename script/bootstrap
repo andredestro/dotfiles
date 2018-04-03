@@ -11,26 +11,55 @@ source script/log
 
 echo ''
 
-setup_gitconfig() {
-info 'setup gitconfig'
+check_mac_updates() {
+  info 'Finding available software updates'
+  softwareupdate_result=$(softwareupdate -l 2>&1)
+  if [[ softwareupdate_result = *"No new software available"* ]]; then
+    system_updated=true
+  fi
+  if ! [[ system_updated ]]; then
+    if [[ softwareupdate_result = *"[restart]"* ]]; then
+      need_reboot=true
+    fi
+    sudo softwareupdate -i -a --no-scan
+  fi 
+  success 'MacOS updated!'
+
+  if [[ need_reboot = true ]]; then
+    warning 'Please, reboot your mac and re-run this script'
+    exit 0
+  fi
+}
+
+update_terminal_profile() {
+  info 'Changing default profile in Terminal.app'
+  if source terminal/update_profile | while read -r data; do info "$data"; done
+  then
+    success 'terminal profile'
+  else
+    fail 'error updating profile'
+  fi
+}
+
+setup_git() {
+  info 'Setup gitconfig'
   # if there is no user.email, we'll assume it's a new machine/setup and ask it
   if [ -z "$(git config --global --get user.email)" ]; then
-    user ' - What is your github author name?'
-    read -r user_name
-    user ' - What is your github author email?'
-    read -r user_email
+  user ' - What is your github author name?'
+  read -r user_name
+  user ' - What is your github author email?'
+  read -r user_email
 
-    git config --global user.name "$user_name"
-    git config --global user.email "$user_email"
+  git config --global user.name "$user_name"
+  git config --global user.email "$user_email"
   else
-    # otherwise this gitconfig was already made
-    info "already configured"
+  # otherwise this gitconfig was already made
+  info 'already configured'
   fi
   # include the gitconfig.local file
   git config --global include.path ~/.gitconfig.local
   success 'gitconfig'
 }
-
 
 link_file() {
   if [ -e "$2" ]; then
@@ -47,7 +76,7 @@ link_file() {
 }
 
 install_dotfiles() {
-  info 'installing dotfiles'
+  info 'Installing dotfiles'
   find -H "$DOTFILES_ROOT" -maxdepth 2 -name '*.symlink' -not -path '*.git*' |
     while read -r src; do
       dst="$HOME/.$(basename "${src%.*}")"
@@ -56,19 +85,19 @@ install_dotfiles() {
 }
 
 osx_defaults() {
-  info 'setting osx defaults'
+  info 'Setting osx defaults'
   if source macos/osxdefaults | while read -r data; do info "$data"; done
   then
-    success 'osx defaults'
+    success 'OSX defaults'
   else
     fail 'error installing dependencies'
   fi
 }
 
 install_dependencies() {
-  info 'installing dependencies'
+  info 'Installing dependencies'
   # if source bin/dot | while read -r data; do info "$data"; done
-  if sh bin/dot
+  if sh script/install
   then
     success 'dependencies installed'
   else
@@ -91,22 +120,14 @@ set_zsh_default_shell() {
     success "set $("$zsh" --version) at $zsh as default shell"
 }
 
-install_ohmyzsh() {
-  info 'installing oh-my-zsh'
-  if sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-  then
-    success 'Oh My ZSH!'
-  else
-    fail 'error installing oh-my-zsh'
-  fi
-}
 
-setup_gitconfig
+check_mac_updates
+update_terminal_profile
+setup_git
 install_dotfiles
 osx_defaults
 install_dependencies
 set_zsh_default_shell
-install_ohmyzsh
 
 echo ''
 echo '  All installed!'
