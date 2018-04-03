@@ -8,8 +8,7 @@
 
 First, make sure you have all those things installed:
 
-- `git`: to clone the repo
-- `curl`: to download some stuff
+- `git`: to clone the repo _(Just type git in the terminal, hit enter and follow the instructions to install it)_
 
 ### Install
 
