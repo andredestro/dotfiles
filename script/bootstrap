@@ -33,7 +33,7 @@ check_mac_updates() {
 
 update_terminal_profile() {
   info 'Changing default profile in Terminal.app'
-  if source terminal/update_profile | while read -r data; do info "$data"; done
+  if source terminal/update_profile.sh | while read -r data; do info "$data"; done
   then
     success 'terminal profile'
   else
@@ -75,23 +75,13 @@ link_file() {
   success "linked $1 to $2"
 }
 
-install_dotfiles() {
+dotfiles() {
   info 'Installing dotfiles'
   find -H "$DOTFILES_ROOT" -maxdepth 2 -name '*.symlink' -not -path '*.git*' |
     while read -r src; do
       dst="$HOME/.$(basename "${src%.*}")"
       link_file "$src" "$dst"
     done
-}
-
-osx_defaults() {
-  info 'Setting osx defaults'
-  if source macos/osxdefaults | while read -r data; do info "$data"; done
-  then
-    success 'OSX defaults'
-  else
-    fail 'error installing dependencies'
-  fi
 }
 
 install_dependencies() {
@@ -103,6 +93,15 @@ install_dependencies() {
   else
     fail 'error installing dependencies'
   fi
+}
+
+update_defaults() {
+  # find the defaults and run them iteratively
+  info "Find and executes defaults scripts"
+  find . -name defaults.sh | while read defaults_file ; do 
+    source "${defaults_file}";
+    success "${defaults_file}"
+  done
 }
 
 find_zsh() {
@@ -124,10 +123,14 @@ set_zsh_default_shell() {
 check_mac_updates
 update_terminal_profile
 setup_git
-install_dotfiles
-osx_defaults
+dotfiles
+update_defaults
 install_dependencies
 set_zsh_default_shell
+
+for app in "Dock" "Finder" "Mail" "Messages" "Safari" "SystemUIServer"; do
+    killall "${app}" > /dev/null 2>&1
+done
 
 echo ''
 echo '  All installed!'

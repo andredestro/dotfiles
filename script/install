@@ -12,16 +12,19 @@ source script/log
 $DOTFILES_ROOT/homebrew/install.sh
 
 # Run Homebrew through the Brewfile
-info "› brew bundle"
 brew bundle -v
 brew cask cleanup
 
-info "› Installing software from Mac App Store"
+info "Installing software from Mac App Store"
 sh macappstore
 
 # find the installers and run them iteratively
-info "› Find and executes install scripts"
+info "Find and executes install scripts"
 find . -name install.sh | while read installer ; do 
-	info "›› ${installer}..."
+	info "›${installer}..."
 	sh -c "${installer}" ;
 done
+
+# Update Dock
+info "Updating Dock apps"
+source $DOTFILES_ROOT/macos/update_dock.sh
