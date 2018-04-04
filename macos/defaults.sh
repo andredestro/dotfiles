@@ -145,6 +145,11 @@ defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
 # Prevent Safari from opening ‘safe’ files automatically after downloading
 defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
 
+# Show sidebar with bookmarks
+defaults write com.apple.safari ShowSidebarInTopSites -bool true 
+defaults write com.apple.safari SidebarViewModeIdentifier -string "Bookmarks"
+
+
 ################################################################################
 # Dock                                                                         #
 ################################################################################
