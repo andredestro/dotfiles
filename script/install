@@ -18,10 +18,13 @@ brew cask cleanup
 info "Installing software from Mac App Store"
 sh macappstore
 
+# Agreeing to the Xcode/iOS license
+sudo xcodebuild -license
+
 # find the installers and run them iteratively
 info "Find and executes install scripts"
 find . -name install.sh | while read installer ; do 
-	info "›${installer}..."
+	info "${installer}..."
 	sh -c "${installer}" ;
 done
 

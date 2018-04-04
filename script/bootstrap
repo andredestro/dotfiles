@@ -42,16 +42,15 @@ setup_git() {
   info 'Setup gitconfig'
   # if there is no user.email, we'll assume it's a new machine/setup and ask it
   if [ -z "$(git config --global --get user.email)" ]; then
-  user ' - What is your github author name?'
-  read -r user_name
-  user ' - What is your github author email?'
-  read -r user_email
-
-  git config --global user.name "$user_name"
-  git config --global user.email "$user_email"
+    user ' - What is your github author name?'
+    read -r user_name
+    user ' - What is your github author email?'
+    read -r user_email
+    git config --global user.name "$user_name"
+    git config --global user.email "$user_email"
   else
-  # otherwise this gitconfig was already made
-  info 'already configured'
+    # otherwise this gitconfig was already made
+    info 'already configured'
   fi
   # include the gitconfig.local file
   git config --global include.path ~/.gitconfig.local
@@ -125,9 +124,12 @@ update_defaults
 install_dependencies
 set_zsh_default_shell
 
-for app in "Dock" "Finder" "Mail" "Messages" "Safari" "SystemUIServer"; do
-    killall "${app}" > /dev/null 2>&1
-done
+# for app in "Dock" "Finder" "Mail" "Messages" "Safari" "SystemUIServer"; do
+#     killall "${app}" > /dev/null 2>&1
+# done
 
 echo ''
 echo '  All installed!'
+echo ''
+
+zsh
