@@ -148,6 +148,7 @@ defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
 # Show sidebar with bookmarks
 defaults write com.apple.safari ShowSidebarInTopSites -bool true 
 defaults write com.apple.safari SidebarViewModeIdentifier -string "Bookmarks"
+defaults write com.apple.safari ShowSidebarInNewWindows -bool false
 
 
 ################################################################################
