@@ -12,6 +12,7 @@ dockutil --add /Applications/Safari.app --no-restart
 dockutil --add /Applications/Mail.app --no-restart
 dockutil --add /Applications/Calendar.app --no-restart
 dockutil --add /Applications/Notes.app --no-restart
+dockutil --add /Applications/Reminders.app --no-restart
 
 dockutil --add /Applications/Messages.app --no-restart
 dockutil --add /Applications/WhatsApp.app --no-restart
