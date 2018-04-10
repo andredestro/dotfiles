@@ -108,25 +108,12 @@ find_zsh() {
   fi
 }
 
-set_zsh_default_shell() {
-  zsh="$(find_zsh)"
-  which chsh >/dev/null 2>&1 &&
-    chsh -s "$zsh" &&
-    success "set $("$zsh" --version) at $zsh as default shell"
-}
-
-
 check_mac_updates
 update_terminal_profile
 setup_git
 dotfiles
 update_defaults
 install_dependencies
-set_zsh_default_shell
-
-# for app in "Dock" "Finder" "Mail" "Messages" "Safari" "SystemUIServer"; do
-#     killall "${app}" > /dev/null 2>&1
-# done
 
 echo ''
 echo '  All installed!'
