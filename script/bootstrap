@@ -100,20 +100,12 @@ update_defaults() {
   done
 }
 
-find_zsh() {
-  if which zsh >/dev/null 2>&1 && grep "$(which zsh)" /etc/shells >/dev/null; then
-    which zsh
-  else
-    echo "/bin/zsh"
-  fi
-}
-
 check_mac_updates
 update_terminal_profile
 setup_git
 dotfiles
-update_defaults
 install_dependencies
+update_defaults
 
 echo ''
 echo '  All installed!'
