@@ -15,6 +15,10 @@ $DOTFILES_ROOT/homebrew/install.sh
 brew bundle -v
 brew cask cleanup
 
+info "Installing Cocoapods"
+sudo gem install cocoapods
+
+# CocoaPods manages library dependencies for Xcode projects
 info "Installing software from Mac App Store"
 sh macappstore
 
