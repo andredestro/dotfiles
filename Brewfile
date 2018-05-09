@@ -5,7 +5,8 @@ brew 'zsh'
 brew 'zsh-syntax-highlighting'
 
 # Editors
-cask 'sublime-text'
+cask 'atom'
+
 # Media
 cask 'spotify'
 cask 'vlc'
@@ -31,5 +32,4 @@ cask 'skitch'
 cask 'the-unarchiver'
 
 # Games
-cask 'openemu'
 cask 'steam'

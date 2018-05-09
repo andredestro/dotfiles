@@ -16,7 +16,7 @@ dockutil --add /Applications/Reminders.app --no-restart
 
 dockutil --add /Applications/Messages.app --no-restart
 dockutil --add /Applications/WhatsApp.app --no-restart
-dockutil --add /Applications/Slack.app --no-restart
+dockutil --add /Applications/Atom.app --no-restart
 dockutil --add /Applications/Skype.app --no-restart
 dockutil --add /Applications/Spotify.app --no-restart
 
