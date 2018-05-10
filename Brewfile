@@ -4,7 +4,7 @@ brew 'mas'
 brew 'zsh'
 brew 'zsh-syntax-highlighting'
 
-# Editors
+# Text editors
 cask 'atom'
 
 # Media
@@ -15,6 +15,10 @@ cask 'vlc'
 cask 'skype'
 cask 'slack'
 cask 'whatsapp'
+
+# Productivity
+cask 'rescuetime'
+cask 'tomighty'
 
 # Android dev
 cask 'android-studio'
