@@ -37,3 +37,10 @@ cask 'the-unarchiver'
 
 # Games
 cask 'steam'
+
+# iOS dev
+mas 'Xcode', id: 497799835
+
+# Utils
+mas 'CopyClip', id: 595191960
+mas 'Translate Tab', id: 458887729
