@@ -1,6 +1,5 @@
 brew 'diff-so-fancy'
 brew 'dockutil'
-brew 'mas'
 brew 'zsh'
 brew 'zsh-syntax-highlighting'
 
