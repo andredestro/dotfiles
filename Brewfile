@@ -5,6 +5,7 @@ brew 'zsh-syntax-highlighting'
 
 # Text editors
 cask 'atom'
+cask 'visual-studio-code'
 
 # Media
 cask 'spotify'
