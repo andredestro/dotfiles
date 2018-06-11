@@ -4,7 +4,6 @@ brew 'zsh'
 brew 'zsh-syntax-highlighting'
 
 # Text editors
-cask 'atom'
 cask 'visual-studio-code'
 
 # Media
@@ -22,7 +21,6 @@ cask 'tomighty'
 
 # Android dev
 cask 'android-studio'
-cask 'genymotion'
 
 # Xamarin dev
 cask 'rider'
@@ -31,6 +29,7 @@ cask 'visual-studio'
 # Utils
 cask 'appcleaner'
 cask 'authy'
+cask 'postman'
 cask 'sip'
 cask 'skitch'
 cask 'the-unarchiver'
