@@ -13,7 +13,7 @@ $DOTFILES_ROOT/homebrew/install.sh
 
 # Run Homebrew through the Brewfile
 brew bundle -v
-brew cask cleanup
+brew cleanup
 
 # Agreeing to the Xcode/iOS license
 sudo xcodebuild -license accept
