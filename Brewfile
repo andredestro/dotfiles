@@ -4,14 +4,13 @@ brew 'zsh'
 brew 'zsh-syntax-highlighting'
 
 # Text editors
-cask 'visual-studio-code'
+cask 'atom'
 
 # Media
 cask 'spotify'
 cask 'vlc'
 
 # Messages
-cask 'skype'
 cask 'slack'
 cask 'whatsapp'
 
