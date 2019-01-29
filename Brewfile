@@ -1,3 +1,4 @@
+brew 'autojump'
 brew 'diff-so-fancy'
 brew 'dockutil'
 brew 'zsh'
